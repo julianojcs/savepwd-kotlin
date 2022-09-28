@@ -1,6 +1,8 @@
 package com.apfjuliano.savepass
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.*
 import android.widget.*
@@ -29,6 +31,21 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
             findNavController().navigate(R.id.action_homeFragment_to_passFragment)
         }
 
+        edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+//                Log.e("TAG", "====> BEF: s= ${s}, start ${start}, count ${count}, after ${after}")
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                passwordAdapter.filter.filter(s)
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                "Total ${passwordAdapter.size} of ${passwordAdapter.originalSize}".also { tvTotal.text = it }
+            }
+
+        })
+
         //Data
         passwordList = ArrayList()
         passwordList.add(Password(1,"Gmail account", "apfjuliano@gmail.com", "galo12345"))
@@ -51,10 +68,11 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
         passwordAdapter.setData(passwordList)
         recyclerView.adapter = passwordAdapter
 
-        tvTotal.text = "Total of ${ passwordAdapter.itemCount.toString() } items"
+        "Total ${passwordAdapter.size} of ${passwordAdapter.originalSize}".also { tvTotal.text = it }
 
         return view
     }
+
 
     override fun clickedItem(password: Password) {
         findNavController().navigate(R.id.action_homeFragment_to_editPasswordFragment)
