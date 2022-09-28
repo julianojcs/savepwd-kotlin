@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    tools:context=".HomeFragment">
+
+    <View
+        android:id="@+id/rectangle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:background="@color/blue"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Password Locker"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rectangleMargin"
+        />
+
+    <Button
+        android:id="@+id/btnPlus"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:padding="0dp"
+        android:text="+"
+        android:textSize="30sp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView"
+        />
+
+    <View
+        android:id="@+id/rectangleMargin"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        app:layout_constraintTop_toBottomOf="@id/rectangle"
+        app:layout_constraintBottom_toBottomOf="@id/rectangle"
+        android:layout_marginHorizontal="16dp"
+        android:backgroundTint="@color/blue"
+        android:background="@color/blue"
+        />
+
+    <EditText
+        android:id="@+id/edtSearch"
+        android:inputType="text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@id/rectangleMargin"
+        app:layout_constraintBottom_toBottomOf="@id/rectangleMargin"
+        android:layout_marginHorizontal="18dp"
+        android:layout_marginVertical="1dp"
+        android:paddingHorizontal="8dp"
+        android:iconifiedByDefault="false"
+        android:queryHint="Search password item"
+        android:backgroundTint="@color/white"
+        android:background="@color/white"
+        android:textSize="20sp"
+        android:textColor="@color/darkcarbon" />
+
+    <TextView
+        android:id="@+id/tvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="My passwords"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/lightcarbon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rectangleMargin"
+        app:layout_constraintEnd_toStartOf="@id/tvTotal"
+        />
+
+    <TextView
+        android:id="@+id/tvTotal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:gravity="end"
+        android:text="Total of 05"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/lightcarbon"
+        app:layout_constraintBottom_toBottomOf="@id/tvPassword"
+        app:layout_constraintStart_toEndOf="@id/tvPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginHorizontal="16dp"
+        tools:background="@color/lightyellow"
+        tools:backgroundTint="@color/lightyellow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvPassword"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!--    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
