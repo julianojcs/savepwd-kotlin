@@ -1,4 +1,4 @@
-package com.apfjuliano.savepass
+package com.apfjuliano.savepass.model
 
 import java.io.Serializable
 

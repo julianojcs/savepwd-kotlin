@@ -22,25 +22,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="Password Locker"
+        android:text="@string/password_locker"
         android:textSize="30sp"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/rectangleMargin"
-        />
-
-    <Button
-        android:id="@+id/btnPlus"
-        android:layout_width="40dp"
-        android:layout_height="wrap_content"
-        android:padding="0dp"
-        android:text="+"
-        android:textSize="30sp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
         />
 
     <View
@@ -65,11 +52,12 @@
         android:layout_marginVertical="1dp"
         android:paddingHorizontal="8dp"
         android:iconifiedByDefault="false"
-        android:queryHint="Search password item"
         android:backgroundTint="@color/white"
         android:background="@color/white"
         android:textSize="20sp"
-        android:textColor="@color/darkcarbon" />
+        android:hint="@string/search_account_name"
+        android:textColor="@color/darkcarbon"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/tvPassword"
@@ -92,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:gravity="end"
-        android:text="Total of 05"
+        tools:text="Total of 05"
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="@color/lightcarbon"
@@ -122,4 +110,27 @@
             android:layout_marginBottom="0dp"/>
 
     </LinearLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnPlus"
+            android:src="@drawable/ic_add"
+            android:backgroundTint="@color/white"
+            app:tint="@color/purple_700"
+            app:fabSize="mini"
+            app:shapeAppearanceOverlay="@style/shapeAppearanceOverlay"
+            app:borderWidth="0dp"
+            android:layout_gravity="top|end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginTop="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView"
+            android:contentDescription="@string/add_button" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

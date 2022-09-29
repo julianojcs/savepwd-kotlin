@@ -1,4 +1,4 @@
-package com.apfjuliano.savepass
+package com.apfjuliano.savepass.view
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -8,13 +8,18 @@ import android.widget.Filter
 import android.widget.Filterable
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.apfjuliano.savepass.R
+import com.apfjuliano.savepass.model.Password
 import java.util.*
 import kotlin.collections.ArrayList
-import kotlin.properties.Delegates
 
 //class PasswordAdapter(private var passwordList: ArrayList<Password>)
 class PasswordAdapter(var clickedItem: ClickedItem)
     : RecyclerView.Adapter<PasswordAdapter.PasswordViewHolder>(), Filterable {
+
+    interface ClickedItem{
+        fun clickedItem(password: Password)
+    }
 
     private lateinit var passwordList: ArrayList<Password>
     private lateinit var passwordListFilter: ArrayList<Password>
@@ -28,10 +33,6 @@ class PasswordAdapter(var clickedItem: ClickedItem)
         originalSize = passwordList.size
         size = passwordListFilter.size
         notifyDataSetChanged()
-    }
-
-    interface ClickedItem{
-        fun clickedItem(password: Password)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PasswordViewHolder {
