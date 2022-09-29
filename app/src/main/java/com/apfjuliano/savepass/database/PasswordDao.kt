@@ -20,6 +20,9 @@ interface PasswordDao {
     @Delete
     fun deletePassword(tbpassword: TbPassword)
 
+    @Query("DELETE FROM tbpassword WHERE id = :id")
+    fun deleteById(id: Int)
+
     @Update
     fun updatePassword(tbpassword: TbPassword)
 }

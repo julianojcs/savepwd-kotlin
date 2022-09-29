@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.*
-import android.widget.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.apfjuliano.savepass.database.PasswordDao
 import com.apfjuliano.savepass.database.PwdDb
 import com.apfjuliano.savepass.database.TbPassword
 import com.apfjuliano.savepass.model.Password
@@ -20,6 +24,8 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
     private lateinit var recyclerView: RecyclerView
     private lateinit var passwordAdapter: PasswordAdapter
     private lateinit var passwordList: ArrayList<Password>
+    private lateinit var lstPassword:  List<TbPassword>
+    private lateinit var passwordDao: PasswordDao
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -54,7 +60,8 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
         //Data
         passwordList = ArrayList()
 
-        val lstPassword = PwdDb.getInstance(context).passwordDao().getPasswords()
+        passwordDao = PwdDb.getInstance(context).passwordDao()
+        lstPassword = passwordDao.getPasswords()
 
         for (item in lstPassword) {
             passwordList.add(Password(item.id,item.name, item.userName, item.password))
@@ -75,8 +82,6 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
 
 
     override fun clickedItem(password: Password) {
-        findNavController().navigate(R.id.action_homeFragment_to_editPasswordFragment)
-
         Log.e("TAG", "====> ${password.name}")
     }
 

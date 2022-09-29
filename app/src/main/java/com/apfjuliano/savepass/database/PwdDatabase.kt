@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.apfjuliano.savepass.view.PasswordAdapter
 
 //@Database(entities = arrayOf(Password::class, Client::class, Book:class), version = 1)
 //@Database(entities = [Password::class, Client::class, Book:class], version = 1)
