@@ -2,7 +2,6 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/base_navigation"
     app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/homeFragment"
@@ -12,9 +11,6 @@
         <action
             android:id="@+id/action_homeFragment_to_passFragment"
             app:destination="@id/passFragment" />
-        <action
-            android:id="@+id/action_homeFragment_to_editPasswordFragment"
-            app:destination="@id/editPasswordFragment" />
     </fragment>
     <fragment
         android:id="@+id/passFragment"
@@ -23,17 +19,6 @@
         tools:layout="@layout/fragment_add_password" >
         <action
             android:id="@+id/action_passFragment_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpTo="@id/homeFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/editPasswordFragment"
-        android:name="com.apfjuliano.savepass.EditPasswordFragment"
-        android:label="Edit password"
-        tools:layout="@layout/fragment_edit_password" >
-        <action
-            android:id="@+id/action_editPasswordFragment_to_homeFragment"
             app:destination="@id/homeFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
