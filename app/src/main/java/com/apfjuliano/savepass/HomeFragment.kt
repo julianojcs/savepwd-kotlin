@@ -3,6 +3,7 @@ package com.apfjuliano.savepass
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Base64
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -26,6 +27,10 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
     private lateinit var passwordList: ArrayList<Password>
     private lateinit var lstPassword:  List<TbPassword>
     private lateinit var passwordDao: PasswordDao
+
+    private fun String.encode(): String {
+        return Base64.encodeToString(this.toByteArray(charset("UTF-8")), Base64.DEFAULT)
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
@@ -61,6 +66,24 @@ class HomeFragment : Fragment(), PasswordAdapter.ClickedItem {
         passwordList = ArrayList()
 
         passwordDao = PwdDb.getInstance(context).passwordDao()
+
+//        passwordDao.apply {
+//            insertPasswords(
+//                TbPassword("Gmail account", "apfjuliano@gmail.com", "galo12345".encode()),
+//                TbPassword("LinkedIn", "apfjuliano@gmail.com", "l1nkp4rK".encode()),
+//                TbPassword("Facebook", "julianocosta.usa@gmail.com", "F4c3b00k.".encode()),
+//                TbPassword("WhatsApp", "27981330708", "12345678".encode()),
+//                TbPassword("Instagram", "apfjuliano@gmail.com", "1n5t49876".encode()),
+//                TbPassword("www.amazon.com.br", "apfjuliano@gmail.com", "963852".encode()),
+//                TbPassword("Apple Id", "apfjuliano@gmail.com", "963852".encode()),
+//                TbPassword("Azul Airlines", "apfjuliano@gmail.com", "963852".encode()),
+//                TbPassword("Binance Wallet", "apfjuliano@gmail.com", "B1n4nc3".encode()),
+//                TbPassword("Cartão de Crédito Ourocard", "", "1234".encode()),
+//                TbPassword("www.mercadolivre.com.br", "julianocosta.usa@gmail.com", "m3345ki".encode())
+//            )
+//        }
+
+
         lstPassword = passwordDao.getPasswords()
 
         for (item in lstPassword) {
